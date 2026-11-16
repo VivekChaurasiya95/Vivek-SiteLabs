@@ -687,9 +687,10 @@
     // Pointer Scrubbing
     function scrubFromPointer(ev) {
       const rect = chart.getBoundingClientRect();
-      const cornerWidth = 280; // left corner label
-      const activeWidth = rect.width - (window.innerWidth > 768 ? cornerWidth : 0);
-      const clientX = ev.clientX - rect.left - (window.innerWidth > 768 ? cornerWidth : 0);
+      const cornerEl = chart.querySelector(".pc__corner");
+      const cornerWidth = cornerEl ? cornerEl.offsetWidth : 280;
+      const activeWidth = Math.max(10, rect.width - cornerWidth);
+      const clientX = ev.clientX - rect.left - cornerWidth;
       const fraction = Math.max(0, Math.min(1, clientX / activeWidth));
       render(fraction * 12);
     }
