@@ -897,6 +897,71 @@
         e.preventDefault();
       }
     });
+
+    // Quick tap command chips (especially for mobile touchscreens)
+    const quickBtns = document.querySelectorAll(".term__quick-btn");
+    quickBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cmd = btn.getAttribute("data-cmd");
+        if (cmd) {
+          processCommand(cmd);
+          if (output) output.scrollTop = output.scrollHeight;
+        }
+      });
+    });
+  }
+
+  // =========================================================================
+  // 10. MOBILE NAVIGATION DRAWER
+  // =========================================================================
+  function initMobileNav() {
+    const mobileBtn = document.getElementById("mobileMenuBtn");
+    const drawer = document.getElementById("mobileNavDrawer");
+    const backdrop = document.getElementById("mobileNavBackdrop");
+    const closeBtn = document.getElementById("mobileNavCloseBtn");
+    if (!mobileBtn || !drawer) return;
+
+    function openMobileDrawer() {
+      drawer.classList.add("is-open");
+      if (backdrop) backdrop.classList.add("is-open");
+      mobileBtn.classList.add("is-active");
+      mobileBtn.setAttribute("aria-expanded", "true");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeMobileDrawer() {
+      drawer.classList.remove("is-open");
+      if (backdrop) backdrop.classList.remove("is-open");
+      mobileBtn.classList.remove("is-active");
+      mobileBtn.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("no-scroll");
+    }
+
+    mobileBtn.addEventListener("click", () => {
+      if (drawer.classList.contains("is-open")) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
+      }
+    });
+
+    if (closeBtn) closeBtn.addEventListener("click", closeMobileDrawer);
+    if (backdrop) backdrop.addEventListener("click", closeMobileDrawer);
+
+    // Close when a link inside mobile drawer is tapped
+    const mobileLinks = drawer.querySelectorAll(".nv-mobile-link");
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMobileDrawer();
+      });
+    });
+
+    // Close on Escape key
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && drawer.classList.contains("is-open")) {
+        closeMobileDrawer();
+      }
+    });
   }
 
   // =========================================================================
@@ -904,6 +969,7 @@
   // =========================================================================
   function init() {
     initNavGlider();
+    initMobileNav();
     initTheme();
     initClock();
     initCursor();
