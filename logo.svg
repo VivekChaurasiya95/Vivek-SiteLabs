@@ -1,15 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 52" width="240" height="52" fill="none" class="sitelabs-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 54" width="320" height="54" fill="none" class="vsl-brand-logo">
+  <!-- VSL Emblem Mark -->
   <g transform="translate(2, 2)">
-    <!-- Emblem Mark -->
-    <rect x="4" y="4" width="7" height="40" rx="1.5" fill="currentColor"/>
-    <rect x="15" y="4" width="27" height="7" rx="1.5" fill="currentColor"/>
-    <rect x="15" y="15" width="7" height="29" rx="1.5" fill="currentColor"/>
-    <rect x="26" y="15" width="16" height="7" rx="1.5" fill="currentColor"/>
-    <rect x="26" y="26" width="16" height="18" rx="2" fill="#fcb900"/>
+    <rect x="6" y="6" width="6.5" height="27" rx="1.5" fill="currentColor"/>
+    <rect x="6" y="27" width="17.5" height="6" rx="1.5" fill="currentColor"/>
+    <rect x="17.5" y="11" width="6.5" height="33" rx="1.5" fill="currentColor"/>
+    <rect x="17.5" y="6" width="26" height="6.5" rx="1.5" fill="currentColor"/>
+    <rect x="28" y="17" width="15.5" height="6.5" rx="1.5" fill="currentColor"/>
+    <rect x="28" y="28" width="15.5" height="16" rx="2" fill="#fcb900"/>
   </g>
-  <!-- Wordmark -->
-  <text x="64" y="32" font-family="'Manrope', -apple-system, sans-serif" font-weight="800" font-size="24" letter-spacing="-0.04em" fill="currentColor">SITELABS</text>
-  <text x="180" y="32" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-weight="400" font-size="24" fill="currentColor">.</text>
-  <!-- Secondary Blueprint Tag -->
-  <text x="65" y="44" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="500" letter-spacing="0.16em" fill="#8a8a86">ORTHOGONAL // SPEC 2026</text>
+  <!-- Wordmark: Vivek's SiteLabs. -->
+  <text x="62" y="31" font-family="'Manrope', -apple-system, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.035em" fill="currentColor">VIVEK'S SITELABS</text>
+  <text x="278" y="31" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-weight="400" font-size="22" fill="currentColor">.</text>
+  <!-- Architectural Subtitle -->
+  <text x="63.5" y="44" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="500" letter-spacing="0.16em" fill="#8a8a86">AUTONOMOUS SYSTEMS // 29 REPOSITORIES</text>
 </svg>

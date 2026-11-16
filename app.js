@@ -11,6 +11,110 @@
   const projects = window.SITE_PROJECTS || [];
 
   // =========================================================================
+  // 00. PREMIUM NAVBAR GLIDER & SCROLLSPY
+  // =========================================================================
+  function initNavGlider() {
+    const navMenu = document.getElementById("navMenu");
+    const glider = document.getElementById("navGlider");
+    const topNav = document.getElementById("topNav");
+    if (!navMenu || !glider) return;
+
+    const items = Array.from(navMenu.querySelectorAll(".nv__item"));
+    let isClickScrolling = false;
+    let clickTimeout = null;
+
+    function positionGlider(el) {
+      if (!el) {
+        glider.style.opacity = "0";
+        return;
+      }
+      glider.style.left = el.offsetLeft + "px";
+      glider.style.width = el.offsetWidth + "px";
+      glider.style.opacity = "1";
+    }
+
+    function getActiveItem() {
+      return navMenu.querySelector(".nv__item.is-active") || items[0];
+    }
+
+    // Hover interactions
+    items.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        positionGlider(item);
+      });
+      item.addEventListener("click", () => {
+        isClickScrolling = true;
+        clearTimeout(clickTimeout);
+        items.forEach((i) => i.classList.remove("is-active"));
+        item.classList.add("is-active");
+        positionGlider(item);
+        clickTimeout = setTimeout(() => {
+          isClickScrolling = false;
+        }, 750);
+      });
+    });
+
+    navMenu.addEventListener("mouseleave", () => {
+      positionGlider(getActiveItem());
+    });
+
+    // Window Resize update
+    window.addEventListener("resize", () => {
+      positionGlider(getActiveItem());
+    }, { passive: true });
+
+    // Scroll Elevation on topNav
+    window.addEventListener("scroll", () => {
+      if (topNav) {
+        topNav.classList.toggle("is-scrolled", window.scrollY > 20);
+      }
+    }, { passive: true });
+
+    // Dynamic Scrollspy
+    const sectionIds = items.map((it) => it.getAttribute("href")?.replace("#", "")).filter(Boolean);
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+
+    function updateScrollspy() {
+      if (isClickScrolling) return;
+
+      const scrollPos = window.scrollY + 200;
+      let currentSectionId = null;
+
+      sections.forEach((sec) => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionId = sec.id;
+        }
+      });
+
+      if (currentSectionId) {
+        const activeLink = navMenu.querySelector(`.nv__item[href="#${currentSectionId}"]`);
+        if (activeLink && !activeLink.classList.contains("is-active")) {
+          items.forEach((i) => i.classList.remove("is-active"));
+          activeLink.classList.add("is-active");
+          positionGlider(activeLink);
+        }
+      }
+    }
+
+    window.addEventListener("scroll", updateScrollspy, { passive: true });
+
+    // Initial positioning after fonts / layout ready
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        positionGlider(getActiveItem());
+      });
+    }
+    setTimeout(() => {
+      positionGlider(getActiveItem());
+    }, 80);
+    setTimeout(() => {
+      positionGlider(getActiveItem());
+    }, 300);
+  }
+
+  // =========================================================================
   // 01. THEME SWITCHER
   // =========================================================================
   function initTheme() {
@@ -799,6 +903,7 @@
   // BOOTSTRAP ALL MODULES
   // =========================================================================
   function init() {
+    initNavGlider();
     initTheme();
     initClock();
     initCursor();
