@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiteLabs // Brand Identity & Logo Specification</title>
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .showcase-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: clamp(40px, 6vw, 100px) var(--gut);
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+    }
+
+    .brand-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--line2);
+      padding-bottom: 3.5rem;
+    }
+
+    .brand-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .brand-title {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-title em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent-amber);
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .brand-card {
+      border: 1px solid var(--line2);
+      background: var(--bg);
+      padding: clamp(30px, 4vw, 60px);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-card--light {
+      background: #f6f6f4;
+      color: #141415;
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .brand-card--light .emblem-bar {
+      fill: #141415;
+    }
+
+    .brand-card--light .mono {
+      color: #6f6f6b;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--mute);
+    }
+
+    .mark-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+    }
+
+    .mark-large {
+      width: 140px;
+      height: 140px;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+      transition: transform 0.5s var(--settle);
+    }
+
+    .mark-large:hover {
+      transform: scale(1.08);
+    }
+
+    .geometry-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    .geom-col strong {
+      display: block;
+      color: var(--fg);
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .geom-col span {
+      color: var(--mute);
+      font-size: 0.75rem;
+    }
+
+    /* Favicon sizes test bench */
+    .favicon-bench {
+      display: flex;
+      align-items: flex-end;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 2.5rem;
+      border: 1px solid var(--line2);
+      background: var(--doc-bg);
+    }
+
+    .fav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .fav-item img, .fav-item svg {
+      border: 1px solid var(--line);
+      background: #141415;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .fav-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--mute);
+    }
+
+    .nav-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--accent-amber);
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .brand-grid {
+        grid-template-columns: 1fr;
+      }
+      .geometry-specs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="site-body">
+
+  <div class="showcase-container">
+    
+    <div class="brand-hero">
+      <div>
+        <a href="index.html" class="nav-back-link mono">← BACK TO SITELABS SHOWCASE HUB</a>
+      </div>
+
+      <div class="brand-header-row">
+        <div>
+          <span class="mono sh__label">BRAND SPECIFICATION // MULTI-BILLION DOLLAR TECH AESTHETIC</span>
+          <h1 class="brand-title">Orthogonal <em>Nexus.</em></h1>
+        </div>
+        <div class="mono" style="color:var(--mute); font-size:0.8rem; text-align:right;">
+          <div>HARMONIC COMBINATION: HORIZONTAL × VERTICAL</div>
+          <div>CLIENT: SITELABS // VIVEK CHAURASIYA</div>
+          <div>RELEASE: SPEC 2026</div>
+        </div>
+      </div>
+      <p style="font-size:1.15rem; color:var(--soft); max-width:850px; line-height:1.6;">
+        Designed with architectural precision, the SiteLabs emblem is built on the intersection of horizontal breadth (systems, timescale, horizons) and vertical stature (computational depth, monoliths, pillars). Interlocking seamlessly into an abstract monogram of <strong>S</strong> and <strong>L</strong> with a luminous <strong>amber execution core</strong>.
+      </p>
+    </div>
+
+    <!-- 01. PRIMARY LOCKUPS -->
+    <div class="brand-grid">
+      <!-- Dark Theme Lockup -->
+      <div class="brand-card">
+        <div class="card-top mono">
+          <span>01 // SIGNATURE GRAPHITE DARK</span>
+          <span>#141415 CHARCOAL</span>
+        </div>
+        
+        <div class="mark-stage">
+          <div style="display:flex; align-items:center; gap:1.8rem;">
+            <svg class="site-emblem mark-large" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="6.5" height="36" rx="1.2" class="emblem-bar"/>
+              <rect x="16.5" y="6" width="25.5" height="6.5" rx="1.2" class="emblem-bar"/>
+              <rect x="16.5" y="16.5" width="6.5" height="25.5" rx="1.2" class="emblem-bar"/>
+              <rect x="27" y="16.5" width="15" height="6.5" rx="1.2" class="emblem-bar"/>
+              <rect x="27" y="27" width="15" height="15" rx="2" class="emblem-core"/>
+            </svg>
+            <div>
+              <div style="font-size:2.8rem; font-weight:800; letter-spacing:-0.04em; line-height:1; text-transform:uppercase;">
+                SiteLabs<span style="font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:var(--fg);">.</span>
+              </div>
+              <div class="mono" style="font-size:0.75rem; letter-spacing:0.18em; color:var(--mute); margin-top:0.4rem;">
+                ORTHOGONAL // SPEC 2026
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="geometry-specs mono">
+          <div class="geom-col">
+            <strong>HORIZONTAL AXIS</strong>
+            <span>3 cantilever planes governing span and temporal rhythm.</span>
+          </div>
+          <div class="geom-col">
+            <strong>VERTICAL AXIS</strong>
+            <span>2 monolithic masts providing architectural foundation.</span>
+          </div>
+          <div class="geom-col">
+            <strong>EXECUTION CORE</strong>
+            <span>15×15px Amber Nexus (#fcb900) representing focused AI logic.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Light Theme Lockup -->
+      <div class="brand-card brand-card--light">
+        <div class="card-top mono">
+          <span>02 // ARCHITECTURAL LIGHT PAPER</span>
+          <span>#F6F6F4 TITANIUM CHALK</span>
+        </div>
+        
+        <div class="mark-stage">
+          <div style="display:flex; align-items:center; gap:1.8rem;">
+            <svg class="site-emblem mark-large" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="6.5" height="36" rx="1.2" class="emblem-bar"/>
+              <rect x="16.5" y="6" width="25.5" height="6.5" rx="1.2" class="emblem-bar"/>
+              <rect x="16.5" y="16.5" width="6.5" height="25.5" rx="1.2" class="emblem-bar"/>
+              <rect x="27" y="16.5" width="15" height="6.5" rx="1.2" class="emblem-bar"/>
+              <rect x="27" y="27" width="15" height="15" rx="2" style="fill:#fcb900;"/>
+            </svg>
+            <div>
+              <div style="font-size:2.8rem; font-weight:800; letter-spacing:-0.04em; line-height:1; text-transform:uppercase; color:#141415;">
+                SiteLabs<span style="font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:#141415;">.</span>
+              </div>
+              <div class="mono" style="font-size:0.75rem; letter-spacing:0.18em; color:#6f6f6b; margin-top:0.4rem;">
+                ORTHOGONAL // SPEC 2026
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="geometry-specs mono">
+          <div class="geom-col">
+            <strong style="color:#141415;">SOLID INK DENSITY</strong>
+            <span>100% Contrast #141415 against warm paper substrate.</span>
+          </div>
+          <div class="geom-col">
+            <strong style="color:#141415;">SWISS PURITY</strong>
+            <span>Uncompromising clarity on high-DPI Retina screens.</span>
+          </div>
+          <div class="geom-col">
+            <strong style="color:#141415;">VERSATILITY</strong>
+            <span>Flawless for print, silkscreen, and hardware branding.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02. FAVICON TEST BENCH -->
+    <div>
+      <div style="margin-bottom:1.5rem;">
+        <span class="mono sh__label">FAVICON SUITE // ULTRA-HIGH DPI SCALING BENCH</span>
+        <h2 class="h2" style="font-size:clamp(2rem, 4vw, 3.8rem);">
+          Favicon in <em>scale.</em>
+        </h2>
+      </div>
+
+      <div class="favicon-bench">
+        <!-- 16px -->
+        <div class="fav-item">
+          <img src="favicon.ico" width="16" height="16" alt="Favicon 16x16" style="image-rendering:pixelated;">
+          <span class="fav-label mono">16 × 16 (Browser Tab)</span>
+        </div>
+
+        <!-- 32px -->
+        <div class="fav-item">
+          <img src="favicon.ico" width="32" height="32" alt="Favicon 32x32">
+          <span class="fav-label mono">32 × 32 (Standard)</span>
+        </div>
+
+        <!-- 48px -->
+        <div class="fav-item">
+          <svg viewBox="0 0 48 48" width="48" height="48" fill="none" style="border-radius:10px;">
+            <rect width="48" height="48" fill="#141415" rx="10"/>
+            <rect x="8" y="8" width="6.5" height="32" rx="1.2" fill="#f4f4f2"/>
+            <rect x="17.5" y="8" width="22.5" height="6.5" rx="1.2" fill="#f4f4f2"/>
+            <rect x="17.5" y="17.5" width="6.5" height="22.5" rx="1.2" fill="#f4f4f2"/>
+            <rect x="27" y="17.5" width="13" height="6.5" rx="1.2" fill="#f4f4f2"/>
+            <rect x="27" y="27" width="13" height="13" rx="1.8" fill="#fcb900"/>
+          </svg>
+          <span class="fav-label mono">48 × 48 (Desktop Icon)</span>
+        </div>
+
+        <!-- 64px -->
+        <div class="fav-item">
+          <svg viewBox="0 0 48 48" width="64" height="64" fill="none" style="border-radius:12px;">
+            <rect width="48" height="48" fill="#141415" rx="10"/>
+            <rect x="8" y="8" width="6.5" height="32" rx="1.2" fill="#f4f4f2"/>
+            <rect x="17.5" y="8" width="22.5" height="6.5" rx="1.2" fill="#f4f4f2"/>
+            <rect x="17.5" y="17.5" width="6.5" height="22.5" rx="1.2" fill="#f4f4f2"/>
+            <rect x="27" y="17.5" width="13" height="6.5" rx="1.2" fill="#f4f4f2"/>
+            <rect x="27" y="27" width="13" height="13" rx="1.8" fill="#fcb900"/>
+          </svg>
+          <span class="fav-label mono">64 × 64 (High Res)</span>
+        </div>
+
+        <!-- 180px Apple Touch Icon -->
+        <div class="fav-item">
+          <img src="apple-touch-icon.png" width="100" height="100" alt="Apple Touch Icon" style="border-radius:20px;">
+          <span class="fav-label mono">180 × 180 (iOS / Apple Touch Icon)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03. FOOTER CTA -->
+    <div style="border-top:1px solid var(--line2); padding-top:3rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem;">
+      <div class="mono" style="font-size:0.8rem; color:var(--mute);">
+        SITELABS BRAND IDENTITY SYSTEM // COPYRIGHT © 2026 VIVEK CHAURASIYA
+      </div>
+      <div>
+        <a href="index.html" class="btn btn--primary">View Showcase Hub →</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+

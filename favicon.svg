@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <style>
+    :root {
+      --bar-color: #f4f4f2;
+      --bg-color: #141415;
+      --core-color: #fcb900;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bar-color: #141415;
+        --bg-color: #f6f6f4;
+        --core-color: #ff6900;
+      }
+    }
+    .bg { fill: var(--bg-color); rx: 10px; }
+    .bar { fill: var(--bar-color); }
+    .core { fill: var(--core-color); }
+  </style>
+  <rect width="48" height="48" class="bg"/>
+  <rect x="8" y="8" width="6.5" height="32" rx="1.2" class="bar"/>
+  <rect x="17.5" y="8" width="22.5" height="6.5" rx="1.2" class="bar"/>
+  <rect x="17.5" y="17.5" width="6.5" height="22.5" rx="1.2" class="bar"/>
+  <rect x="27" y="17.5" width="13" height="6.5" rx="1.2" class="bar"/>
+  <rect x="27" y="27" width="13" height="13" rx="1.8" class="core"/>
+</svg>
