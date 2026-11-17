@@ -226,14 +226,26 @@
 
     const cells = section.querySelectorAll(".nm__cell");
 
+    // Ensure all drums have individual 0..9 spans for exact vertical sizing
+    cells.forEach((cell) => {
+      const drums = cell.querySelectorAll(".nm__drum");
+      drums.forEach((drum) => {
+        if (drum.children.length !== 10) {
+          drum.innerHTML = "<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>";
+        }
+      });
+    });
+
     function spinDigits() {
-      cells.forEach((cell) => {
+      cells.forEach((cell, cellIdx) => {
         const digits = cell.querySelectorAll(".nm__d");
-        digits.forEach((d) => {
+        digits.forEach((d, digitIdx) => {
           const target = parseInt(d.getAttribute("data-digit") || "0", 10);
           const drum = d.querySelector(".nm__drum");
           if (drum) {
-            // Each digit takes 1em height
+            // Elegant mechanical stagger between wheels
+            const delay = cellIdx * 50 + digitIdx * 80;
+            drum.style.transitionDelay = `${delay}ms`;
             drum.style.transform = `translateY(-${target * 10}%)`;
           }
         });
@@ -251,25 +263,40 @@
       cells.forEach((cell) => {
         const drums = cell.querySelectorAll(".nm__drum");
         drums.forEach((drum) => {
+          drum.style.transitionDelay = "0ms";
           drum.style.transform = "translateY(0%)";
         });
+        const bar = cell.querySelector(".nm__bar");
+        if (bar) {
+          bar.style.setProperty("--w", "0%");
+        }
       });
     }
 
-    // Spin on intersection observer
+    // Spin immediately if in viewport or observe intersection
     let hasSpun = false;
+    const triggerSpin = () => {
+      if (!hasSpun) {
+        hasSpun = true;
+        setTimeout(spinDigits, 80);
+      }
+    };
+
     if ("IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          if (!hasSpun) {
-            hasSpun = true;
-            setTimeout(spinDigits, 150);
-          }
+          triggerSpin();
         }
-      }, { threshold: 0.25 });
+      }, { threshold: 0.1 });
       observer.observe(section);
     } else {
-      spinDigits();
+      triggerSpin();
+    }
+
+    // Immediate viewport check
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      triggerSpin();
     }
 
     // Re-spin on user click
@@ -277,7 +304,7 @@
       cell.addEventListener("click", () => {
         cells.forEach((c) => c.classList.toggle("is-on", c === cell));
         resetDigits();
-        setTimeout(spinDigits, 80);
+        setTimeout(spinDigits, 60);
       });
     });
   }
