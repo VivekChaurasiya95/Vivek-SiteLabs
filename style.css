@@ -398,6 +398,7 @@ button {
 .logo-text-group {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .logo-text {
