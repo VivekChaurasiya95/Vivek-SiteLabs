@@ -124,11 +124,12 @@
     function applyTheme(theme) {
       root.setAttribute("data-theme", theme);
       if (themeMeta) {
-        themeMeta.setAttribute("content", theme === "light" ? "#f6f6f4" : "#141415");
+        themeMeta.setAttribute("content", theme === "light" ? "#f6f6f4" : "#2e2e30");
       }
       try {
         localStorage.setItem("sitelabs-theme", theme);
       } catch (e) {}
+      document.dispatchEvent(new CustomEvent("graphite:theme"));
     }
 
     const savedTheme = localStorage.getItem("sitelabs-theme") || "dark";
@@ -966,12 +967,105 @@
   }
 
   // =========================================================================
+  // AUTHENTIC GRAPHITE HERO COFFEE STEAM & DESK MOTION
+  // =========================================================================
+  const PUFFS = [
+    [83, 325, 28, 35], [98, 318, 28, 35], [122, 317, 30, 37], [126, 319, 30, 37], [62, 323, 22, 27],
+    [136, 314, 28, 35], [80, 319, 24, 30], [67, 325, 28, 35], [118, 322, 22, 27], [131, 315, 28, 35],
+    [109, 316, 22, 27], [73, 312, 22, 27], [120, 329, 24, 30], [105, 327, 28, 35], [81, 313, 24, 30],
+    [122, 314, 24, 30], [87, 330, 24, 30], [71, 329, 22, 27]
+  ];
+
+  function steamSvg() {
+    const puffs = PUFFS.map((p) => {
+      return `<ellipse class="hd__puff" cx="${p[0]}" cy="${p[1]}" rx="${p[2]}" ry="${p[3]}"/>`;
+    }).join("");
+    return `<svg viewBox="0 0 200 400" focusable="false" aria-hidden="true"><defs>` +
+      `<radialGradient id="steam-puff"><stop class="hd__stop" offset="0"/><stop class="hd__stop hd__stop--end" offset="1"/></radialGradient>` +
+      `<filter id="steam-wisps" x="-50%" y="-20%" width="200%" height="140%">` +
+      `<feTurbulence type="fractalNoise" baseFrequency="0.016 0.024" numOctaves="3" seed="4" result="noise">` +
+      `<animate attributeName="baseFrequency" dur="14s" values="0.016 0.024;0.019 0.028;0.014 0.021;0.016 0.024" repeatCount="indefinite"/>` +
+      `</feTurbulence><feDisplacementMap in="SourceGraphic" in2="noise" scale="48" xChannelSelector="R" yChannelSelector="G" result="torn"/>` +
+      `<feGaussianBlur in="torn" stdDeviation="5"/></filter></defs>` +
+      `<ellipse class="hd__haze" cx="100" cy="326" rx="62" ry="54"/><g class="hd__puffs">${puffs}</g></svg>`;
+  }
+
+  function initSteam() {
+    const header = document.querySelector(".hd");
+    if (!header) return;
+
+    let steam = header.querySelector(".hd__steam");
+    if (!steam) {
+      steam = document.createElement("div");
+      steam.className = "hd__steam";
+      steam.setAttribute("aria-hidden", "true");
+      steam.innerHTML = steamSvg();
+      header.appendChild(steam);
+    }
+
+    function place() {
+      const w = header.offsetWidth;
+      const h = header.offsetHeight;
+      const s = Math.max(w / 2560, h / 1240);
+      const cup = [370, 1102]; // Exact coffee cup center coordinates on 2560x1240 canvas
+      const x = (cup[0] - 1280) * s + w / 2;
+      const y = cup[1] * s;
+      steam.style.setProperty("--ss", s + "px");
+      steam.style.setProperty("--steam-x", x.toFixed(1) + "px");
+      steam.style.setProperty("--steam-y", y.toFixed(1) + "px");
+      steam.classList.toggle("is-off", x < 40 * s || x > w - 40 * s || window.innerWidth <= 768);
+    }
+
+    window.addEventListener("resize", place, { passive: true });
+    document.addEventListener("graphite:theme", place);
+    place();
+  }
+
+  function initHeroParallax() {
+    const header = document.querySelector(".hd");
+    const studio = document.querySelector(".hd__studio");
+    if (!header || !studio || window.matchMedia("(pointer: coarse)").matches) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    header.addEventListener("mousemove", (e) => {
+      const rect = header.getBoundingClientRect();
+      const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+      targetX = nx * 10;
+      targetY = ny * 8;
+    }, { passive: true });
+
+    header.addEventListener("mouseleave", () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function loop() {
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+      if (window.innerWidth > 1100) {
+        studio.style.transform = `translateX(-50%) translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+      } else {
+        studio.style.transform = "none";
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  // =========================================================================
   // BOOTSTRAP ALL MODULES
   // =========================================================================
   function init() {
     initNavGlider();
     initMobileNav();
     initTheme();
+    initSteam();
+    initHeroParallax();
     initClock();
     initCursor();
     initNumbers();

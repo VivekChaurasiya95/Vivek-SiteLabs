@@ -15,9 +15,10 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://viveks-sitelabs.vercel.app/">
-  <meta name="theme-color" content="#141415" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#2e2e30" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
   <meta name="color-scheme" content="dark light">
+  <link rel="preload" as="image" href="hero-desk-dark.webp" fetchpriority="high">
 
   <!-- Open Graph / Facebook / LinkedIn / Discord -->
   <meta property="og:type" content="website">
@@ -189,8 +190,10 @@
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <!-- HEADER NAVIGATION -->
+  <!-- HEADER NAVIGATION & GRAPHITE HERO -->
   <header class="hd hd--studio" id="headerTop">
+    <!-- Authentic Graphite Photographic Desk Background -->
+    <div class="hd__photo" aria-hidden="true"></div>
     <div class="nv" id="topNav">
       <div class="nv__logo">
         <a href="#headerTop" class="logo-link" aria-label="Vivek's SiteLabs Home">
@@ -282,38 +285,35 @@
       </div>
     </aside>
 
-    <!-- HERO SECTION -->
-    <div class="hd__inner">
-      <div class="hd__meta-top mono">
-        <div class="meta-item"><span>COORDINATES:</span> 26.2183° N, 78.1828° E // GWALIOR · NEW DELHI</div>
-        <div class="meta-item"><span>CATALOG ID:</span> GITHUB:VivekChaurasiya95</div>
-        <div class="meta-item"><span>RELEASE:</span> 2026 GRAPHITE SPEC</div>
+    <!-- HERO STUDIO TITLE CONTAINER WITH VIEWFINDER CORNER BRACKETS ┌ ┐ └ ┘ -->
+    <div class="hd__studio">
+      <div class="mono hd__meta">
+        <span>( WEB STUDIO )</span>
+        <span>AI &amp; SYSTEMS LAB</span>
+        <span>EST. 2026</span>
       </div>
 
-      <div class="hd__title-wrap">
-        <h1 class="hd__title">VIVEK'S SITELABS<em>.</em></h1>
-        <div class="hd__steam" aria-hidden="true" id="steamAura"></div>
-      </div>
+      <h1 class="hd__title">Vivek's SiteLabs<em>.</em></h1>
 
       <div class="hd__row">
         <p class="it hd__tag">
-          Calm codebases, sharply built — 29 autonomous AI agents, distributed backends, and high-performance interfaces.
+          Calm websites, sharply made.
         </p>
 
-        <div class="hd__actions">
-          <a href="#work" class="btn btn--primary">Explore 29 Repositories ↓</a>
-          <a href="https://github.com/VivekChaurasiya95" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">GitHub Profile ↗</a>
+        <div class="hd__btn-wrap">
+          <a href="#work" class="hd__cta">View work →</a>
         </div>
       </div>
+    </div>
 
-      <div class="hd__bottom-bar">
-        <div class="mono hd__status">
-          <span class="pulse-indicator"></span> 29 REPOSITORIES INDEXED · 0 ERROR LOGS · ALL PRODUCTION BUILDS
-        </div>
-        <div class="mono hd__scroll">
-          <a href="#numbers">SCROLL DOWN ↓</a>
-        </div>
-      </div>
+    <!-- VERTICAL SCROLL INDICATOR ON DESK BOTTOM-LEFT -->
+    <div class="mono hd__scroll">
+      <a href="#numbers">SCROLL ↓</a>
+    </div>
+
+    <!-- STATUS BAR ON DESK BOTTOM-RIGHT -->
+    <div class="hd__desk-status mono">
+      <span class="pulse-indicator"></span> 29 REPOSITORIES · 0 RUNTIME ERRORS · AUTONOMOUS AI
     </div>
 
     <!-- MARQUEE TICKER RIBBON -->
