@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 128" width="1200" height="128" role="img" aria-label="Vivek's SiteLabs Footer">
+  <defs>
+    <linearGradient id="fBg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#242426"/>
+      <stop offset="50%" stop-color="#2e2e30"/>
+      <stop offset="100%" stop-color="#242426"/>
+    </linearGradient>
+    <linearGradient id="fLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fcb900" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#fcb900" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#fcb900" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="fClip">
+      <rect width="1200" height="128" rx="14" ry="14"/>
+    </clipPath>
+    <style>
+      .mono { font-family: ui-monospace, 'SFMono-Regular', Consolas, Menlo, monospace; }
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      @keyframes shimmer {
+        0% { transform: translateX(-300px); }
+        100% { transform: translateX(1200px); }
+      }
+      @keyframes heartbeat {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+      }
+      .shimmer-bar { animation: shimmer 5s ease-in-out infinite; }
+      .dot { animation: heartbeat 2s ease-in-out infinite; }
+    </style>
+  </defs>
+  <g clip-path="url(#fClip)">
+    <rect width="1200" height="128" fill="url(#fBg)"/>
+    <rect class="shimmer-bar" x="0" y="0" width="300" height="2.5" fill="url(#fLine)"/>
+
+    <text x="600" y="54" text-anchor="middle" class="sans" font-size="22" font-weight="800" fill="#f4f4f2" letter-spacing="-0.4">
+      Engineered with Precision by Vivek Chaurasiya<tspan fill="#fcb900">.</tspan>
+    </text>
+
+    <g transform="translate(362, 74)" class="mono" font-size="11.5" letter-spacing="1.8" fill="#a9a9a5">
+      <circle class="dot" cx="0" cy="-4" r="3.5" fill="#7bdcb5"/>
+      <text x="14" y="0">VIVEK'S SITELABS // GRAPHITE 2026 // MIT LICENSE</text>
+    </g>
+
+    <text x="600" y="106" text-anchor="middle" class="mono" font-size="10.5" letter-spacing="2" fill="#848480">
+      STAR THIS REPOSITORY IF YOU APPRECIATE ZERO-DEPENDENCY FRONTEND CRAFTSMANSHIP
+    </text>
+
+    <rect x="0.75" y="0.75" width="1198.5" height="126.5" rx="14" ry="14" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="1.5"/>
+  </g>
+</svg>
+

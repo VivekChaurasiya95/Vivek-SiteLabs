@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 24" width="1200" height="24" role="img" aria-hidden="true">
+  <defs>
+    <pattern id="ticks" width="24" height="10" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="2" x2="0" y2="10" stroke="#9e9e9a" stroke-opacity="0.35" stroke-width="1"/>
+      <line x1="12" y1="6" x2="12" y2="10" stroke="#9e9e9a" stroke-opacity="0.2" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="pulseBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fcb900" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#fcb900" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#fcb900" stop-opacity="0"/>
+    </linearGradient>
+    <style>
+      @keyframes travel {
+        0% { transform: translateX(-220px); }
+        100% { transform: translateX(1220px); }
+      }
+      .beam {
+        animation: travel 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+    </style>
+  </defs>
+  <rect x="0" y="2" width="1200" height="10" fill="url(#ticks)"/>
+  <line x1="0" y1="12" x2="1200" y2="12" stroke="#9e9e9a" stroke-opacity="0.3" stroke-width="1"/>
+  <rect class="beam" x="0" y="10.5" width="220" height="3" rx="1.5" fill="url(#pulseBeam)"/>
+</svg>
+
